@@ -1,7 +1,8 @@
 const path = require("node:path");
 const sass = require("sass");
 const markdownIt = require("markdown-it");
-const Image = require("@11ty/eleventy-img")
+const Image = require("@11ty/eleventy-img");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 
 module.exports = async function(eleventyConfig) {
@@ -11,8 +12,9 @@ module.exports = async function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("js");
 	eleventyConfig.addPassthroughCopy("img");
 
-
 	eleventyConfig.addTemplateFormats("scss")
+
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
 	eleventyConfig.addExtension("scss", {
 		outputFileExtension: "css",
